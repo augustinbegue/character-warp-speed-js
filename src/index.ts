@@ -16,10 +16,10 @@ export class CharacterWarp {
     circleRadius: number;
 
     // Style properties
-    frequencyMin: number = 200;
-    frequencyMax: number = 2_000;
-    lifetimeMin: number = 10_000;
-    lifetimeMax: number = 30_000;
+    frequencyMin: number = 100;
+    frequencyMax: number = 500;
+    lifetimeMin: number = 5_000;
+    lifetimeMax: number = 10_000;
     background: string = "black";
     color: string = "white";
     fontSizeMin: number = 3;
@@ -93,10 +93,9 @@ export class CharacterWarp {
         charEl.style.fontSize = this.getFontSize();
         let duration = Math.max(1, this.getFrequency() / 1000);
         charEl.style.transition = "opacity " + duration + "s ease-in 0s";
-
         setTimeout(() => {
             charEl.classList.add("in");
-        })
+        }, 50)
 
         this.element.appendChild(charEl);
 
@@ -104,7 +103,10 @@ export class CharacterWarp {
     }
 
     private destroyChar(charEl: HTMLElement) {
-        charEl.remove()
+        charEl.classList.remove("in")
+        charEl.ontransitionend = (ev: Event) => {
+            charEl.remove()
+        }
     }
 }
 
