@@ -9,8 +9,8 @@
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var CharacterWarp = /** @class */ (function () {
-        function CharacterWarp(element, characterSet) {
+    var CharacterWarpSpeed = /** @class */ (function () {
+        function CharacterWarpSpeed(element, characterSet) {
             var _this = this;
             // Rectangle properties
             this.width = 0;
@@ -40,7 +40,7 @@
                 timeout = setTimeout(c, self.getFrequency());
             }, this.getFrequency());
         }
-        CharacterWarp.prototype.setStyles = function () {
+        CharacterWarpSpeed.prototype.setStyles = function () {
             this.element.style.overflow = "hidden";
             this.element.style.background = this.background;
             var style = document.querySelector("style") || document.createElement('style');
@@ -50,19 +50,19 @@
             }
             document.head.appendChild(style);
         };
-        CharacterWarp.prototype.SetSizeAttributes = function () {
+        CharacterWarpSpeed.prototype.SetSizeAttributes = function () {
             this.width = this.element.clientWidth;
             this.heigth = this.element.clientHeight;
             this.center.x = this.width / 2;
             this.center.y = this.heigth / 2;
         };
-        CharacterWarp.prototype.getFrequency = function () {
+        CharacterWarpSpeed.prototype.getFrequency = function () {
             return Math.floor(Math.random() * (this.frequencyMax - this.frequencyMin + 1) + this.frequencyMin);
         };
-        CharacterWarp.prototype.getLifetime = function () {
+        CharacterWarpSpeed.prototype.getLifetime = function () {
             return Math.floor(Math.random() * (this.lifetimeMax - this.lifetimeMin + 1) + this.lifetimeMin);
         };
-        CharacterWarp.prototype.getCirclePointCoord = function () {
+        CharacterWarpSpeed.prototype.getCirclePointCoord = function () {
             var coordStart = { x: 0, y: 0 };
             var coordEnd = { x: 0, y: 0 };
             var angle = Math.floor(Math.random() * 721) - 360;
@@ -72,15 +72,15 @@
             coordEnd.y = (this.heigth / 2) * Math.sin(angle);
             return [coordStart, coordEnd];
         };
-        CharacterWarp.prototype.getRandomChar = function () {
+        CharacterWarpSpeed.prototype.getRandomChar = function () {
             var len = this.characterSet.length;
             var index = Math.floor(Math.random() * len);
             return this.characterSet[index];
         };
-        CharacterWarp.prototype.getFontSize = function () {
+        CharacterWarpSpeed.prototype.getFontSize = function () {
             return Math.floor(Math.random() * (this.fontSizeMax - this.fontSizeMin + 1) + this.fontSizeMin) + "em";
         };
-        CharacterWarp.prototype.createChar = function () {
+        CharacterWarpSpeed.prototype.createChar = function () {
             var char = this.getRandomChar();
             var coords = this.getCirclePointCoord();
             var charEl = document.createElement("p");
@@ -100,13 +100,13 @@
             this.element.appendChild(charEl);
             setTimeout(this.destroyChar, lifetime, charEl);
         };
-        CharacterWarp.prototype.destroyChar = function (charEl) {
+        CharacterWarpSpeed.prototype.destroyChar = function (charEl) {
             charEl.classList.remove("charwarp-in");
             charEl.ontransitionend = function (ev) {
                 charEl.remove();
             };
         };
-        return CharacterWarp;
+        return CharacterWarpSpeed;
     }());
-    exports.default = CharacterWarp;
+    exports.default = CharacterWarpSpeed;
 });

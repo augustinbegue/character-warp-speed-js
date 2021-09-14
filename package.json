@@ -1,6 +1,6 @@
 {
   "name": "character-warp-speed",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Creates an effect spawning characters going from the back of the screen to the front",
   "main": "dist/index.js",
   "scripts": {

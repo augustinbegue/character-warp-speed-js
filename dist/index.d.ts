@@ -2,7 +2,7 @@ interface coordinates {
     x: number;
     y: number;
 }
-export default class CharacterWarp {
+export default class CharacterWarpSpeed {
     element: HTMLElement;
     characterSet: string[];
     width: number;
