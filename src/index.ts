@@ -3,7 +3,7 @@ interface coordinates {
     y: number
 }
 
-export class CharacterWarp {
+export default class CharacterWarp {
     element: HTMLElement;
     characterSet: string[];
 
@@ -24,9 +24,6 @@ export class CharacterWarp {
     color: string = "white";
     fontSizeMin: number = 3;
     fontSizeMax: number = 6;
-
-    // Char Creation Timeout
-
 
     constructor(element: HTMLElement, characterSet: string[]) {
         this.element = element;
@@ -139,15 +136,5 @@ export class CharacterWarp {
         charEl.ontransitionend = (ev: Event) => {
             charEl.remove()
         }
-    }
-}
-
-
-
-window.onload = (ev: Event) => {
-    let el = document.getElementById("characterWarp");
-
-    if (el) {
-        new CharacterWarp(el, ["1", "2", "3", "4", "5", "6", "7", "8", "9"]);
     }
 }

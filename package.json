@@ -1,13 +1,13 @@
 {
-  "name": "character-warp-effect",
-  "version": "0.0.1",
+  "name": "character-warp-speed",
+  "version": "1.0.0",
   "description": "Creates an effect spawning characters going from the back of the screen to the front",
-  "main": "build/main.js",
+  "main": "dist/index.js",
   "scripts": {
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
-    "build": "webpack --mode=production && cp src/index.html dist/index.html",
-    "cp": "cp src/index.html dist/index.html"
+    "dev": "tsc --watch",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
